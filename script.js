@@ -29,6 +29,10 @@ function checkInputs(
 function addNewRoute() {
   const creationForm = document.querySelector(".creationFormBody");
   creationForm.style.display = "flex";
+  const createRouteBtn = document.querySelector(".createRouteBtn");
+  const editRouteBtn = document.querySelector(".editBtn");
+  createRouteBtn.style.display = "block";
+  editRouteBtn.style.display = "none";
 }
 
 function exitCreationForm() {
@@ -140,7 +144,7 @@ function editFlight(index) {
       const creationForm = document.querySelector(".creationFormBody");
       creationForm.style.display = "flex";
       createRouteBtn.style.display = "none";
-      editRouteBtn.style.display = "flex";
+      editRouteBtn.style.display = "block";
       document.querySelector(".editBtn").onclick = function () {
         editRoute(index);
       };
