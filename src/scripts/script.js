@@ -40,6 +40,16 @@ function exitCreationForm() {
   creationForm.style.display = "none";
 }
 
+function showTableNav() {
+  const creationForm = document.querySelector(".smaller_container");
+
+  if (creationForm.style.display === "none") {
+    creationForm.style.display = "block";
+  } else {
+    creationForm.style.display = "none";
+  }
+}
+
 function calculateDestDuration(start, end) {
   const startDate = new Date(start);
   const endDate = new Date(end);

@@ -7,6 +7,9 @@ function deleteFlight() {
 
   const remainingRoutes = [];
   let index = 0;
+  if (index <= 0) {
+    alert("Pasirinkite elementus kurios norite ištrinti");
+  }
 
   for (const checkbox of checkboxes) {
     if (checkbox.checked) {
