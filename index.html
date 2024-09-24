@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holidays planner</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/b14591f08c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="creationFormBody">
+      <div class="creationForm">
+        <h1>Skrydžio planavimas</h1>
+        <button onclick="exitCreationForm()" class="exitPage">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <label>
+          <span>Įveskite kelionė iš</span>
+
+          <input type="text" id="destiFrom" placeholder="PVZ: (KUN)" />
+        </label>
+        <label>
+          <span>Įveskite kelionė į</span>
+
+          <input type="text" id="destiTo" placeholder="PVZ: (LTN)" />
+        </label>
+        <label>
+          <span>Pasirinkite skrydžio pradžios laiką</span>
+
+          <input type="datetime-local" id="destiStart" />
+        </label>
+        <label>
+          <span>Pasirinkite skrydžio pabaigos laiką</span>
+
+          <input type="datetime-local" id="destiEnd" />
+        </label>
+        <label>
+          <span>Įveskite kelionės klasę</span>
+          <input type="text" id="destiClass" placeholder="(A, B, C)" />
+        </label>
+        <label>
+          <span>Įveskite kelionės persėdimų skaičių</span>
+          <input
+            type="number"
+            id="destiConnecting"
+            placeholder="PVZ: 1"
+            min="0"
+          />
+        </label>
+
+        <button class="createRouteBtn" onclick="createRoute()">Submit</button>
+        <button class="editBtn">Edit submit</button>
+      </div>
+    </div>
+    <header>
+      <h1>Route planner</h1>
+    </header>
+
+    <section id="mainBody">
+      <nav>
+        <ul>
+          <li class="active"><i class="fa-solid fa-plane"></i>Route planner</li>
+        </ul>
+      </nav>
+
+      <div class="tableContainer">
+        <div class="tableActions">
+          <div class="left-side">
+            <button class="exportBtn">
+              <i class="fa-solid fa-download"></i>
+              Export
+            </button>
+            <button class="importBtn">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>Import
+            </button>
+            <button class="deleteBtn" onclick="deleteFlight();">
+              <i class="fa-solid fa-trash-can"></i>
+              Delete
+            </button>
+          </div>
+
+          <div class="right-side">
+            <button class="sortBtn">
+              <i class="fa-solid fa-arrow-up-wide-short"></i>
+              Sort by
+            </button>
+            <label>
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="search"
+                name=""
+                id="searchInput"
+                placeholder="Search here"
+                oninput="searchFlights()"
+              />
+            </label>
+            <button class="addNewBtn" onclick="addNewRoute();">
+              <i class="fa-solid fa-plus"></i>
+              Add new
+            </button>
+          </div>
+        </div>
+
+        <div class="tableBodyContainer">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <input
+                    onclick="selectAll('tableRowData', this)"
+                    type="checkbox"
+                    name="selectAll"
+                  />
+                </th>
+                <th>Kelionė</th>
+                <th>Skrydžio pradžia</th>
+                <th>Skrydžio pabaiga</th>
+                <th>Kelionės trukmė</th>
+                <th>Klasė</th>
+                <th>Persėdimų skaičius</th>
+              </tr>
+            </thead>
+            <tbody id="tableRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
