@@ -6,14 +6,22 @@ function deleteFlight() {
   let routeArray = storedRoutes ? JSON.parse(storedRoutes) : [];
 
   const remainingRoutes = [];
+  let index = 0;
 
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
+  for (const checkbox of checkboxes) {
+    if (checkbox.checked) {
+      index++;
       continue;
     }
-    remainingRoutes.push(routeArray[i]);
+
+    if (routeArray[index] !== undefined) {
+      remainingRoutes.push(routeArray[index]);
+    }
+
+    index++;
   }
 
   localStorage.setItem("route", JSON.stringify(remainingRoutes));
+
   updateTable();
 }

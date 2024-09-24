@@ -55,11 +55,12 @@ function calculateDestDuration(start, end) {
 }
 
 function selectAll(rowClass, sourceCheckbox) {
-  var rows = document.getElementsByClassName(rowClass);
-  for (var i = 0; i < rows.length; i++) {
-    var checkbox = rows[i].getElementsByTagName("input")[0];
+  var rows = Array.from(document.getElementsByClassName(rowClass));
+
+  rows.forEach((row) => {
+    var checkbox = row.getElementsByTagName("input")[0];
     if (checkbox) {
       checkbox.checked = sourceCheckbox.checked;
     }
-  }
+  });
 }

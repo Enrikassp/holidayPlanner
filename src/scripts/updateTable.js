@@ -7,22 +7,7 @@ function updateTable() {
     const getRoutes = JSON.parse(storedRoutes);
 
     if (Array.isArray(getRoutes)) {
-      let templateHTML = "";
-      for (let i = 0; i < getRoutes.length; i++) {
-        templateHTML += `
-          <tr class="tableRowData">
-            <td id='tableCheckBox'><input type="checkbox" /></td>
-            <td>(${getRoutes[i][0].routeFrom} -> ${getRoutes[i][0].routeTo})</td>
-            <td>(${getRoutes[i][0].routeStart})</td>
-            <td>(${getRoutes[i][0].routeEnd})</td>
-            <td>(${getRoutes[i][0].routeDuration})</td>
-            <td>(${getRoutes[i][0].routeClass})</td>
-            <td>(${getRoutes[i][0].routeConnecting})</td>
-            <td><button onclick="editFlight(${i})"><i class="fa-solid fa-pen-to-square"></i></button></td>
-          </tr>`;
-
-        tableRows.innerHTML = templateHTML;
-      }
+      updateHtml(getRoutes);
     }
   } else {
     let templateHTML = `<h1 class="emptyTable">TUŠČIAS</h1>
@@ -30,4 +15,26 @@ function updateTable() {
 
     tableRows.innerHTML = templateHTML;
   }
+}
+
+function updateHtml(data) {
+  const tableRows = document.querySelector("#tableRows");
+  let templateHTML = "";
+  tableRows.innerHTML = templateHTML;
+
+  data.map((value, index) => {
+    templateHTML += `
+    <tr class="tableRowData">
+        <td id='tableCheckBox'><input type="checkbox" /></td>
+        <td>(${value[0].routeFrom} -> ${value[0].routeTo})</td>
+        <td>(${value[0].routeStart})</td>
+        <td>(${value[0].routeEnd})</td>
+        <td>(${value[0].routeDuration})</td>
+        <td>(${value[0].routeClass})</td>
+        <td>(${value[0].routeConnecting})</td>
+        <td><button onclick="editFlight(${index})"><i class="fa-solid fa-pen-to-square"></i></button></td>
+    </tr>`;
+  });
+  console.log(templateHTML);
+  tableRows.innerHTML = templateHTML;
 }
